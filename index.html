@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Panel de control de Yutu Automatización para organizar videos de YouTube.">
+  <title>Yutu Studio — Automatización de YouTube</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Yutu Studio inicio">
+        <span class="brand-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8c0-.8.9-1.3 1.6-.9l9 5.2a1 1 0 0 1 0 1.8l-9 5.2c-.7.4-1.6-.1-1.6-.9V5.8Z" fill="currentColor"/></svg></span>
+        <span class="brand-copy"><b>YUTU <i>STUDIO</i></b><small>CREATOR WORKSPACE</small></span>
+      </a>
+      <div class="side-label">ESPACIO DE TRABAJO</div>
+      <nav class="nav">
+        <a class="nav-item active" href="#overview"><span class="nav-ico">▦</span> Panel general</a>
+        <a class="nav-item" href="#new-video"><span class="nav-ico">＋</span> Nuevo contenido</a>
+        <a class="nav-item" href="#queue-section"><span class="nav-ico">▤</span> Cola de trabajo <span class="nav-count" id="navCount">0</span></a>
+        <a class="nav-item" href="#workflow"><span class="nav-ico">⌘</span> Automatización</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="cloud-card">
+          <div class="cloud-top"><span class="cloud-dot"></span> SISTEMA EN PREPARACIÓN</div>
+          <p>Tu espacio de trabajo está listo. El motor de procesamiento se conectará en la siguiente etapa.</p>
+          <div class="progress"><span></span></div>
+          <small>ETAPA 1 DE 4 · PANEL WEB</small>
+        </div>
+        <div class="profile"><div class="avatar">YS</div><div><b>Mi espacio</b><small>Panel de creador</small></div><span class="profile-dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Abrir menú">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b>Panel general</b></div>
+        <div class="top-actions"><span class="connection"><i></i> Panel operativo</span><div class="top-avatar">YS</div></div>
+      </header>
+
+      <div class="content" id="overview">
+        <section class="welcome">
+          <div>
+            <div class="overline"><span class="spark">✦</span> TU CENTRO DE PRODUCCIÓN</div>
+            <h1>Creá. Organizá.<br><em>Publicá en YouTube.</em></h1>
+            <p>Un solo lugar para preparar tus videos, ordenar tu contenido y construir tu flujo de publicación.</p>
+            <a href="#new-video" class="button button-primary">＋ &nbsp; Preparar videos</a>
+          </div>
+          <div class="welcome-visual" aria-hidden="true">
+            <div class="visual-glow"></div><div class="visual-ring ring-a"></div><div class="visual-ring ring-b"></div>
+            <div class="video-tile"><span class="tile-play">▶</span><span class="tile-line"></span><span class="tile-line short"></span><small>YOUR NEXT VIDEO</small></div>
+            <span class="float-tag tag-one">✦ &nbsp; CREATE</span><span class="float-tag tag-two">▶ &nbsp; PUBLISH</span>
+          </div>
+        </section>
+
+        <section class="stats">
+          <article class="stat-card"><div class="stat-top"><span>Videos en cola</span><span class="stat-icon">▤</span></div><strong id="statQueue">0</strong><small>Contenido preparado</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Shorts</span><span class="stat-icon">▯</span></div><strong id="statShorts">0</strong><small>Formato vertical</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Videos largos</span><span class="stat-icon">▣</span></div><strong id="statLong">0</strong><small>Formato horizontal</small></article>
+          <article class="stat-card highlight-stat"><div class="stat-top"><span>Publicados</span><span class="stat-icon">↗</span></div><strong>—</strong><small>Se habilita al conectar YouTube</small></article>
+        </section>
+
+        <div class="section-title" id="new-video"><div><div class="overline">01 / CONTENIDO</div><h2>Preparar nuevo contenido</h2><p>Agregá uno o varios archivos y definí cómo querés organizarlos.</p></div><span class="step-badge">PASO 1</span></div>
+        <section class="work-grid">
+          <article class="panel upload-panel">
+            <div class="panel-heading"><div><span class="panel-icon">↑</span><div><h3>Archivos de video</h3><p>Seleccioná los videos desde tu dispositivo.</p></div></div><span class="soft-label">MÚLTIPLE</span></div>
+            <label class="dropzone" for="videoFiles" id="dropzone">
+              <span class="upload-symbol"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16.5v2A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <b>Arrastrá tus videos aquí</b><span>o <u>explorá tus archivos</u></span><small>Podés seleccionar varios archivos de una vez</small>
+              <em>MP4 · MOV · WEBM · AVI</em>
+            </label>
+            <input id="videoFiles" type="file" accept="video/*" multiple hidden>
+            <div id="selectedFiles" class="selected-files"><div class="empty-files">Todavía no seleccionaste archivos.</div></div>
+            <div class="privacy-note"><span>♧</span> En esta versión los archivos se seleccionan localmente; todavía no se transfieren a la nube.</div>
+          </article>
+
+          <article class="panel settings-panel">
+            <div class="panel-heading"><div><span class="panel-icon">⚙</span><div><h3>Detalles de publicación</h3><p>Configurá el destino de cada video.</p></div></div></div>
+            <label class="field-label" for="format">Formato de contenido</label>
+            <div class="format-options">
+              <label class="format-option selected" data-format="short"><input type="radio" name="format" value="short" checked><span class="format-symbol">▯</span><b>Short</b><small>Vertical · hasta 3 min*</small></label>
+              <label class="format-option" data-format="long"><input type="radio" name="format" value="long"><span class="format-symbol">▣</span><b>Video largo</b><small>Horizontal</small></label>
+              <label class="format-option" data-format="both"><input type="radio" name="format" value="both"><span class="format-symbol">▥</span><b>Ambos</b><small>Preparar dos versiones</small></label>
+            </div>
+            <label class="field-label" for="visibility">Visibilidad al publicar</label>
+            <select id="visibility" class="field-control"><option value="private">Privado — recomendado para pruebas</option><option value="unlisted">No listado</option><option value="public">Público</option></select>
+            <label class="field-label" for="schedule">Programación (referencia)</label>
+            <input id="schedule" class="field-control" type="datetime-local">
+            <label class="field-label" for="notes">Indicaciones / notas</label>
+            <textarea id="notes" class="field-control notes" rows="3" placeholder="Ej.: título tentativo, tema, subtítulos, descripción..."></textarea>
+            <button id="addQueue" class="button button-primary full" disabled>Agregar a la cola <span>→</span></button>
+            <p class="form-footnote">*La clasificación Short depende también de las características del video y las reglas vigentes de YouTube.</p>
+          </article>
+        </section>
+
+        <section class="panel queue-panel" id="queue-section">
+          <div class="queue-heading"><div><div class="overline">02 / ORGANIZACIÓN</div><h2>Cola de trabajo</h2><p>Revisá los contenidos que preparaste antes de conectarlos al motor de publicación.</p></div><div class="queue-tools"><span class="queue-total" id="queueCount">0 elementos</span><button class="button button-quiet" id="exportQueue" disabled>↓ Exportar lista</button></div></div>
+          <div id="queue"><div class="queue-empty"><div class="empty-icon">▤</div><b>Tu cola está vacía</b><p>Los videos que agregues aparecerán aquí.</p><a href="#new-video">Agregar el primer video <span>→</span></a></div></div>
+          <div class="queue-footer"><span><i></i> Los elementos quedan guardados en este navegador.</span><button class="text-button" id="clearQueue" disabled>Vaciar cola</button></div>
+        </section>
+
+        <section class="automation" id="workflow">
+          <div class="automation-copy"><div class="overline">03 / PRÓXIMA ETAPA</div><h2>De la cola a la publicación automática.</h2><p>El siguiente módulo conectará este panel con un servidor seguro para procesar videos, generar subtítulos y publicar mediante la autorización oficial de YouTube.</p><div class="automation-status"><span class="pulse"></span> Backend pendiente de conexión</div></div>
+          <div class="pipeline"><div class="pipe-step done"><span>01</span><b>Panel web</b><small>Preparado</small></div><div class="pipe-line"></div><div class="pipe-step"><span>02</span><b>Procesamiento</b><small>Próxima etapa</small></div><div class="pipe-line"></div><div class="pipe-step"><span>03</span><b>YouTube API</b><small>Por conectar</small></div></div>
+        </section>
+        <footer><span>YUTU STUDIO</span><span>Panel inicial · Construido para crecer</span><span>v1.1</span></footer>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
